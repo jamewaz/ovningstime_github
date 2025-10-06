@@ -20,6 +20,19 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#global-header{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#global-header nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 9px #c0c0c026;
+    padding: 1rem;
+}
 /* -----------------------------------------------------
    Legger til rom rundt innholdet i header-seksjonen
    for bedre luft og struktur.
@@ -44,7 +57,9 @@ nav {
    - Fjernet understreking
    - Svart tekstfarge for kontrast
 ----------------------------------------------------- */
-nav #logo {
+nav #logo,
+nav h1,
+nav h1 a {
     font-size: 25px;
     margin-bottom: 1rem;
     font-weight: 900;
@@ -94,6 +109,25 @@ main section:nth-child(odd) {
 main section section {
     padding: 0rem 3rem;
 }
+
+/* Default (mobile): ensure main sections stack vertically */
+main > section {
+    display: block;
+}
+
+/* Responsive images: ensure they scale to their container */
+figure {
+    margin: 0;
+}
+
+picture,
+picture img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
 
 /* -----------------------------------------------------
    Grunnleggende knappestil:
@@ -154,6 +188,16 @@ footer {
 ----------------------------------------------------- */
 footer section {
     min-width: 300px;
+}
+
+/* Footer: mobile = stacked; desktop = logo on its own row, sections side-by-side */
+footer {
+    display: block;
+}
+
+footer #footer-logo {
+    display: block;
+    margin-bottom: 1.5rem;
 }
 
 /* -----------------------------------------------------
@@ -225,3 +269,134 @@ h2 {
 #some i {
     font-size: 40px;
 }
+
+@media only screen and (max-width:679px){
+    /* Keep the menu in the normal document flow so the logo can sit above it */
+    #menu {
+        background-color: #c0c0c026;
+        position: static; /* no absolute positioning */
+        width: auto;
+        padding: 0.5rem 0;
+        margin-top: 0.25rem;
+    }
+}
+
+/* Responsive header/navigation
+   - Mobile (default): vertical stack, logo above links, centered
+   - Desktop: from 680px (min-width) show horizontal nav with logo and links side-by-side
+*/
+
+@media only screen and (max-width: 679px) {
+    /* Mobile: ensure nav is vertical and centered */
+    #global-header nav {
+        flex-direction: column;
+        align-items: center; /* center logo and menu */
+    }
+
+      nav #logo,
+      nav h1,
+      nav h1 a {
+        margin-bottom: 0.75rem; /* space between logo and links */
+        text-align: center;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center; /* center the link items */
+    }
+
+    nav ul li a {
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media only screen and (min-width:680px){
+    #grid-container{
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas:"topp topp" 
+                            "hovedinnhold sideinnhold"
+                            "bunn bunn";
+    }
+
+    header{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .hidden{
+        display: inline-block;
+    }
+
+    /* Desktop: horizontal nav with logo and links side-by-side */
+    #global-header nav {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #menu ul {
+        display: flex;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
+
+    nav ul {
+        text-align: left;
+    }
+
+    #ham{
+        display: none;
+    }
+
+      #close{
+        display: none;
+    }
+
+    /* Desktop: show main sections as two-column rows (image and content side-by-side) */
+    main > section {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 3rem 0;
+    }
+
+    /* Figures/images take about 40% and text takes 60% */
+    main > section figure {
+        flex: 0 0 40%;
+    }
+
+    main > section section {
+        flex: 1 1 60%;
+        padding: 0 1rem;
+    }
+
+    /* Reverse order for section with id change-order so image appears on the right */
+    #change-order {
+        flex-direction: row-reverse;
+    }
+
+    /* Footer desktop layout: logo on its own row, sections side-by-side */
+    footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    /* Place footer logo to span the full width of the grid on the first row */
+    footer #footer-logo {
+        grid-column: 1 / -1;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Footer sections (the two <section> elements) sit side-by-side on row 2 */
+    footer > section {
+        min-width: 0; /* let grid distribute space */
+    }
+}
+
+

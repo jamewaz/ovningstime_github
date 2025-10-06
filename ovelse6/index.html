@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="ikoner/css/fontawesome.css" rel="stylesheet" />
+    <link href="ikoner/css/brands.css" rel="stylesheet" />
+    <link href="ikoner/css/solid.css" rel="stylesheet" />
+    <link href="ikoner/css/sharp-thin.css" rel="stylesheet" />
+    <link href="ikoner/css/sharp-duotone-thin.css" rel="stylesheet" />
     <title>Forside: øvelse 6</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html" id="logo">Logo</a>
-            <ul>
+<header id="global-header">
+            <nav>
+                
+                <h1><a href="index.html">Logo</a></h1>
+           <div class="group">
+                
+            </div>
+            <ul id="menu" class="hidden">
+                
                 <li><a href="#">Hjem</a></li>
                 <li><a href="#">Tjenester</a></li>
                 <li><a href="#">Jobb</a></li>
@@ -27,7 +37,10 @@
     <main>
         <section>
             <figure>
-                    <img src="https://picsum.photos/300/300" alt="">
+                    <picture>
+                        <source srcset="https://picsum.photos/600/400 600w, https://picsum.photos/900/600 900w, https://picsum.photos/1200/800 1200w" sizes="(min-width:680px) 40vw, 100vw">
+                        <img src="https://picsum.photos/600/400" alt="" loading="lazy">
+                    </picture>
             </figure>
             <section>
                 <h2>Energisparing i Hverdagen: Hvordan Bruke Mindre Strøm</h2>
@@ -41,12 +54,18 @@
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </section>
             <figure>
-                <img src="https://picsum.photos/300/300" alt="">
+                <picture>
+                    <source srcset="https://picsum.photos/600/400 600w, https://picsum.photos/900/600 900w, https://picsum.photos/1200/800 1200w" sizes="(min-width:680px) 40vw, 100vw">
+                    <img src="https://picsum.photos/600/400" alt="" loading="lazy">
+                </picture>
         </figure>
         </section>
         <section>
             <figure>
-                <img src="https://picsum.photos/300/300" alt="">
+                <picture>
+                    <source srcset="https://picsum.photos/600/400 600w, https://picsum.photos/900/600 900w, https://picsum.photos/1200/800 1200w" sizes="(min-width:680px) 40vw, 100vw">
+                    <img src="https://picsum.photos/600/400" alt="" loading="lazy">
+                </picture>
         </figure>
             <section>
                 <h2>Gjenbruk og Resirkulering: Fra Avfall til Ressurser</h2>
